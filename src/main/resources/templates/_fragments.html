@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="${title}">博客详情</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../static/css/typo.css" th:href="@{/css/typo.css}">
+</head>
+
+<body>
+<nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">Blog</h2>
+            <a href="#" th:href="@{/}" class="item" th:classappend="${n==1}? 'active':''"><i class="home icon"></i><span
+                    th:text="#{nav.index}">首页</span></a>
+            <a href="#" th:href="@{/types/-1}" class="item" th:classappend="${n==2}? 'active':''"><i
+                    class="idea icon"></i>分类</a>
+            <a href="#" th:href="@{/tag/-1}" class="item" th:classappend="${n==3}? 'active':''"><i
+                    class="tags icon"></i>标签</a>
+            <a href="#" th:href="@{/archives}" class="item" th:classappend="${n==4}? 'active':''"><i
+                    class="clone icon"></i>归档</a>
+            <a href="#" th:href="@{/about}" class="item" th:classappend="${n==5}? 'active':''"><i class="info icon"></i>关于我们</a>
+            <div class="right item">
+                <form action="#" th:action="@{/search}" target="_blank" method="post">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" name="query" placeholder="Search……" th:value="${query}">
+                        <i onclick="document.forms['search'].submit()" class="search link icon"></i>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-passive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="three wide column">
+                <img src="./static/images/logo.jpg" class="ui rounded image" alt="" style="width: 100px;height: 100px;">
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted teal head">最新博客</h4>
+                <div id="newblog-container">
+                    <div class="ui inverted link list" th:fragment="newblogList">
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item"
+                           th:each="blog:${newblogs}" th:text="${blog.title}">用户故事(Uesr story)</a>
+                        <!--/*-->
+                        <a href="#" class="item">用户故事(Uesr story)</a>
+                        <a href="#" class="item">用户故事(Uesr story)</a>
+                        <!--*/-->
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted teal head">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item" th:text="#{index.email}">QQ</a>
+                    <a href="#" class="item" th:text="#{index.qq}">微信</a>
+                    <a href="#" class="item">钉钉</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted head">最新博客</h4>
+                <p>这是我的个人博客，欢迎访问~</p>
+            </div>
+
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-lined">Copyright 2019-2020 Lirenmi Designed by Education-ZH</p>
+    </div>
+</footer>
+<th:block th:fragment="script">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script>
+        $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+    </script>
+</th:block>
+</body>
+
+
+</html>

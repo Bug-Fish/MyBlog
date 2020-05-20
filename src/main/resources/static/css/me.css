@@ -1,0 +1,83 @@
+.m-padded-mini {
+    padding: 0.4em !important;
+}
+
+.m-padded-tb-mini {
+    padding-top: 0.2em !important;
+    padding-bottom: 0.2em !important;
+}
+
+.m-padded-tb-passive {
+    padding-top: 4em !important;
+    padding-bottom: 4em !important;
+}
+
+.m-padded-tb-large {
+    padding-top: 3em !important;
+    padding-bottom: 3em !important;
+}
+
+.m-padded-tb-big {
+    padding-top: 2em !important;
+    padding-bottom: 2em !important;
+}
+
+.m-padded-tb-middle {
+    padding-top: 1em !important;
+    padding-bottom: 1em !important;
+}
+
+.m-text-thin {
+    font-weight: 300 !important;
+}
+
+.m-text-spaced {
+    letter-spacing: 1px !important;
+
+}
+
+.m-text-lined {
+    line-height: 1.8 !important;
+}
+
+.m-opacity-mini {
+    opacity: 0.8 !important;
+}
+
+
+.m-inline-blog {
+    display: inline-block !important;
+}
+
+.m-container {
+    margin: auto !important;
+    max-width: 72em !important;
+}
+
+.m-margin-tb-mini {
+    margin-top: 0.3em !important;
+    margin-bottom: 0.3em !important;
+}
+
+.m-black {
+    color: black !important;
+}
+
+body {
+    background: url(../images/logo.jpg);
+}
+
+.m-padded-lr {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+
+.m-fixed {
+    position: fixed !important;
+    z-index: 1 !important;
+}
+
+.m-right-bottom {
+    bottom: 0 !important;
+    right: 0 !important;
+}

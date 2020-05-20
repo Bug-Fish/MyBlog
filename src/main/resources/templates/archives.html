@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="_fragments::head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>归档</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="./static/css/me.css">
+</head>
+<body>
+<nav th:replace="_fragments::menu(4)" class="ui inverted attached segment m-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">归档</h2>
+            <a href="#" class="item"><i class="home icon"></i>首页</a>
+            <a href="#" class="item"><i class="idea icon"></i>分类</a>
+            <a href="#" class="item"><i class="tags icon"></i>标签</a>
+            <a href="#" class="item"><i class="clone icon"></i>归档</a>
+            <a href="#" class="item"><i class="info icon"></i>关于我们</a>
+            <div class="right item">
+                <div class="ui icon inverted transparent input">
+                    <input type="text" placeholder="Search……">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- 中间内容 -->
+<div class="m-container m-padded-tb-big">
+    <div class="ui container">
+        <div class="ui top attached m-padded-tb-big segment">
+            <div class="ui middle aligned two column grid">
+                <div class="column">
+                    <h3 class="ui teal header">归档</h3>
+                </div>
+
+                <div class="right aligned column">
+                    共<h2 class="ui orange header m-inline-blog m-text-thin" th:text="${blogCount}"> 114 </h2>篇 博 客
+                </div>
+            </div>
+        </div>
+
+        <th:block th:each="item : ${archiveMap}">
+            <h2 class="ui red center aligned header" th:text="${item.key}">2020</h2>
+            <div class="ui fluid vertical menu">
+                <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item"
+                   th:each="blog:${item.value}">
+                        <span>
+                            <i class="mini teal circle icon"></i><span th:text="${blog.title}">府库无法可能</span>
+                            <div class="ui teal basic left pointing label m-padded-tb-mini"
+                                 th:text="${blog.updateTime}">03/21</div>
+                        </span>
+                    <div class="ui orange basic left pointing label m-padded-tb-mini" th:text="${blog.flag}">原创</div>
+                </a>
+                <!--/*-->
+                <a href="#" target="_blank" class="item">
+                        <span>
+                            <i class="mini teal circle icon"></i>府库无法可能
+                            <div class="ui teal basic left pointing label m-padded-tb-mini">03/21</div>
+                        </span>
+                    <div class="ui orange basic left pointing label m-padded-tb-mini">原创</div>
+                </a>
+                <a href="#" target="_blank" class="item">
+                        <span>
+                            <i class="mini teal circle icon"></i>府库无法可能
+                            <div class="ui teal basic left pointing label m-padded-tb-mini">03/21</div>
+                        </span>
+                    <div class="ui orange basic left pointing label m-padded-tb-mini">原创</div>
+                </a>
+                <!--*/-->
+            </div>
+        </th:block>
+
+
+    </div>
+</div>
+
+
+<!-- 页脚 -->
+<footer th:replace="_fragments::footer" class="ui inverted vertical segment m-padded-tb-passive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="three wide column">
+                <img src="./static/images/logo.jpg" class="ui rounded image" alt="" style="width: 100px;height: 100px;">
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted head">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事(Uesr story)</a>
+                    <a href="#" class="item">用户故事(Uesr story)</a>
+                    <a href="#" class="item">用户故事(Uesr story)</a>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted head">最新博客</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">用户故事(Uesr story)</a>
+                    <a href="#" class="item">用户故事(Uesr story)</a>
+                    <a href="#" class="item">用户故事(Uesr story)</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted head">最新博客</h4>
+                <p>这是我的个人博客，欢迎访问~</p>
+            </div>
+
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-lined">Copyright 2019-2020 Lirenmi Designed by Education-ZH</p>
+    </div>
+</footer>
+<!--/*/<th:block th:replace="_fragments::script">/*/-->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+<!--/*/</th:block>/*/-->
+<script>
+
+
+</script>
+</body>
+</html>

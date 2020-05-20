@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:replace="${title}">博客详情</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+    <link rel="stylesheet" href="./static/css/me.css" th:href="@{/css/me.css}">
+    <link rel="stylesheet" href="../../static/lib/editormd/css/editormd.min.css"
+          th:href="@{/lib/editormd/css/editormd.min.css}">
+</head>
+
+<body>
+<nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui teal header item">管理后台</h2>
+            <a href="#" th:href="@{/admin/blogs}" class="active item" th:classappend="${n==1}? 'active':''"><i
+                    class="home icon"></i>博客</a>
+            <a href="#" th:href="@{/admin/types}" class="item" th:classappend="${n==2}? 'active':''"><i
+                    class="idea icon"></i>分类</a>
+            <a href="#" th:href="@{/admin/tags}" class="item" th:classappend="${n==3}? 'active':''"><i
+                    class="tags icon"></i>标签</a>
+            <div class="right menu">
+                <div class="ui dropdown item">
+                    <div class="item">
+                        <img class="ui avatar image" src="../static/images/logo.jpg" th:src="@{${session.user.avatar}}">
+                        <span th:text="${session.user.nickname}">jyug345</span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a class="item" th:href="@{/admin/logout}">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-passive">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="three wide column">
+                <img src="./static/images/logo.jpg" class="ui rounded image" alt="" style="width: 100px;height: 100px;">
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted teal head">最新博客</h4>
+                <div id="newblog-container">
+                    <div class="ui inverted link list" th:fragment="newblogList">
+                        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item"
+                           th:each="blog:${newblogs}" th:text="${blog.title}">用户故事(Uesr story)</a>
+                        <!--/*-->
+                        <a href="#" class="item">用户故事(Uesr story)</a>
+                        <a href="#" class="item">用户故事(Uesr story)</a>
+                        <!--*/-->
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted teal head">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item" th:text="#{index.email}">QQ</a>
+                    <a href="#" class="item" th:text="#{index.qq}">微信</a>
+                    <a href="#" class="item">钉钉</a>
+                </div>
+            </div>
+            <div class="seven wide column">
+                <h4 class="ui inverted head">最新博客</h4>
+                <p>这是我的个人博客，欢迎访问~</p>
+            </div>
+
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-lined">Copyright 2019-2020 Lirenmi Designed by Education-ZH</p>
+    </div>
+</footer>
+<th:block th:fragment="script">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script>
+        $('#newblog-container').load(/*[[@{/footer/adminNewblog}]]*/"/footer/adminNewblog");
+    </script>
+</th:block>
+</body>
+
+
+</html>
